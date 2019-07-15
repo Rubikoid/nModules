@@ -15,6 +15,9 @@
 
 #include "../Utilities/Versioning.h"
 
+#define LOG_START	FILE* log;fopen_s(&log, "C:\\Code\\litestep\\log.txt", "a");
+#define LOG_END		fclose(log);
+
 class Window;
 
 namespace nCore {

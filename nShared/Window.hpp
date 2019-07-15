@@ -26,6 +26,8 @@
 #include "IStateRender.hpp"
 #include "Rect.hpp"
 #include <set>
+#include <string>
+
 
 
 class Window : MessageHandler, IDropTarget

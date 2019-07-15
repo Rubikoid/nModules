@@ -30,7 +30,6 @@ namespace nCore {
 /// <returns>S_OK if the core is succefully initalized.</returns>
 HRESULT nCore::Connect(VERSION minVersion) {
   HWND coreWindow = FindWindowEx(nullptr, nullptr, L"LSnCore", nullptr);
-
   ASSERT(!sInitialized);
 
   if (coreWindow == nullptr) {
@@ -64,7 +63,6 @@ HRESULT nCore::Connect(VERSION minVersion) {
   RETURNONFAIL(hr, System::_Init(hCoreInstance));
 
   sInitialized = true;
-
   return hr;
 }
 

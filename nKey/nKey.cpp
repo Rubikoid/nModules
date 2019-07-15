@@ -202,6 +202,21 @@ static void LoadHotKeys() {
         L"Error while registering hotkey %ls %ls.\n%ls", mods, key, result.second);
     }
   }
+  if (LiteStep::GetRCLine(L"nKeyLeftWindows", command, _countof(command), L"") != 0) {
+	  std::pair<bool, LPCWSTR> result = AddHotkey(0 | MOD_WIN, 0x5B, command);
+	  if (!result.first) {
+		  ErrorHandler::Error(ErrorHandler::Level::Warning,
+			  L"Error while registering hotkey nKeyLeftWindows.\n%ls", result.second);
+	  }
+  }
+  if (LiteStep::GetRCLine(L"nKeyRightWindows", command, _countof(command), L"") != 0) {
+	  LiteStep::LCTokenizeW(line + _countof("nKeyRightWindows"), NULL, 0, command);
+	  std::pair<bool, LPCWSTR> result = AddHotkey(0 | MOD_WIN, 0x5C, command);
+	  if (!result.first) {
+		  ErrorHandler::Error(ErrorHandler::Level::Warning,
+			  L"Error while registering hotkey nKeyRightWindows.\n%ls", result.second);
+	  }
+  }
 
   LiteStep::LCClose(f);
 }

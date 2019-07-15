@@ -292,8 +292,10 @@ void Popup::Show(LPRECT position, Popup* owner)
 
     mWindow->Show();
     SetWindowPos(mWindow->GetWindowHandle(), HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
-    SetFocus(mWindow->GetWindowHandle());
-    SetActiveWindow(mWindow->GetWindowHandle());
+	// force the window to be focused
+	SetForegroundWindow(mWindow->GetWindowHandle());
+	SetActiveWindow(mWindow->GetWindowHandle());
+	SetFocus(mWindow->GetWindowHandle());
 }
 
 
@@ -311,7 +313,8 @@ LRESULT Popup::HandleMessage(HWND window, UINT msg, WPARAM wParam, LPARAM lParam
         {
             if (LOWORD(wParam) == WA_INACTIVE && mWindow->IsVisible())
             {
-                if (!CheckFocus((HWND)lParam, 3))
+				bool status = !CheckFocus((HWND)lParam, 3);
+                if (status)
                 {
                     Close();
                 }

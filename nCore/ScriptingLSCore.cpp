@@ -11,6 +11,7 @@
 #include "ScriptingHelpers.h"
 #include <map>
 #include <list>
+#include <string>
 
 
 using namespace v8;

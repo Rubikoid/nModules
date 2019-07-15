@@ -215,4 +215,7 @@ EXPORT_CDECL(void) quitModule(HINSTANCE instance) {
   TextFunctions::_Unregister();
 
   UnregisterClassW(gMsgHandler, instance);
+
+  // disconnect from core
+  nCore::Disconnect();
 }

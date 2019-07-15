@@ -148,7 +148,6 @@ void LSModule::DeInitalize() {
     }
     this->drawableClass = 0;
   }
-
   // Disconnect from the core
   nCore::Disconnect();
 }
