@@ -10,3 +10,4 @@ bin
 *.opendb
 *.VC.db
 */.vs/*
+.vs
